@@ -1,0 +1,43 @@
+.register {
+    display: grid;
+    place-items: center;
+    padding: 100px 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.register > img {
+    height: 70px;
+    object-fit: contain;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.register > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register > form > input {
+    height: 50px;
+    width: 350px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.register > form > button {
+    font-size: large;
+    height: 50px;
+    width: 365px;
+    background-color: #0074b1;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.register > form > button:hover {
+    color: #0074b1;
+    background-color: whitesmoke;
+}

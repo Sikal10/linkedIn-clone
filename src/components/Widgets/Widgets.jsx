@@ -19,7 +19,7 @@ const Widgets = () => {
     return (
         <div className={"widgets"}>
             <div className="widgets__header">
-                <h2>Add to your feed</h2>
+                <h2>News</h2>
                 <InfoIcon />
             </div>
 

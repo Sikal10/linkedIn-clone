@@ -23,5 +23,5 @@
 .post__buttons {
     display: flex;
     text-transform: capitalize;
-    /*justify-content: space-between;*/
+    justify-content: space-evenly;
 }

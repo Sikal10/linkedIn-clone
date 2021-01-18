@@ -6,11 +6,9 @@ import {login} from "../../features/userSlice";
 
 const url = "https://www.multiplicalia.com/wp-content/uploads/2019/02/LinkedIn-Logo.png"
 
-const Login = () => {
-    const [name, setName] = useState("");
+const Login = ({history}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [profilePic, setProfilePic] = useState("");
 
     const dispatch = useDispatch();
 
@@ -32,38 +30,58 @@ const Login = () => {
         }
     }
 
-    const registerUser = () => {
-        if (!name) {
-            return alert("Please enter a full name")
-        }
-        console.log("register")
-        auth.createUserWithEmailAndPassword(email, password).then(
-            (userAuth) => {
-                userAuth.user.updateProfile({
-                    displayName: name,
-                    photoURL: profilePic
-                }).then(() => {
-                    dispatch(
-                        login({
-                            email: userAuth.user.email,
-                            uid: userAuth.user.uid,
-                            displayName: name,
-                            photoUrl: profilePic
-                        })
-                    )
-                })
-            }
-        ).catch(error => alert(error))
-    }
+    // const registerUser = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const response = await auth.createUserWithEmailAndPassword(email, password);
+    //         const userAuth = await response;
+    //         console.log(userAuth)
+    //         await userAuth.user.updateProfile({
+    //             displayName: name,
+    //             photoURL: profilePic
+    //         });
+    //         dispatch(login({
+    //             email: userAuth.user.email,
+    //             uid: userAuth.user.uid,
+    //             displayName: userAuth.user.displayName,
+    //             profileUrl: userAuth.user.photoURL
+    //         }))
+    //
+    //
+    //     } catch (err) {
+    //         alert(err)
+    //     }
+    //     // if (!name) {
+    //     //     return alert("Please enter a full name")
+    //     // }
+    //     // console.log("register")
+    //     // auth.createUserWithEmailAndPassword(email, password).then(
+    //     //     (userAuth) => {
+    //     //         userAuth.user.updateProfile({
+    //     //             displayName: name,
+    //     //             photoURL: profilePic
+    //     //         }).then(() => {
+    //     //             dispatch(
+    //     //                 login({
+    //     //                     email: userAuth.user.email,
+    //     //                     uid: userAuth.user.uid,
+    //     //                     displayName: name,
+    //     //                     photoUrl: profilePic
+    //     //                 })
+    //     //             )
+    //     //         })
+    //     //     }
+    //     // ).catch(error => alert(error))
+    // }
 
+    const register = () => {
+        history.push("/register")
+    }
     return (
         <div className={"login"}>
 
             <img src={url} alt=""/>
             <form>
-                <input value={name} onChange={e => setName(e.target.value)} placeholder={"Full name is required"}/>
-                <input value={profilePic} onChange={e => setProfilePic(e.target.value)}
-                       placeholder={"Profile pic URL (optional)"}/>
                 <input value={email} onChange={e => setEmail(e.target.value)} placeholder={"Email"} type="email"/>
                 <input value={password} onChange={e => setPassword(e.target.value)} placeholder={"password"}
                        type="password"/>
@@ -72,7 +90,7 @@ const Login = () => {
             </form>
 
             <p>Not a member?
-                <span className={"login__register"} onClick={registerUser}>{" "} Register now</span>
+                <span className={"login__register"} onClick={register}>{" "} Register now</span>
             </p>
         </div>
     );

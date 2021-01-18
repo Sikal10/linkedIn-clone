@@ -43,6 +43,7 @@ const Feed = () => {
     const handleChange = e => {
         setInput(e.target.value)
     }
+
     return (
         <div className={"feed"}>
             <div className={"feed__inputContainer"}>

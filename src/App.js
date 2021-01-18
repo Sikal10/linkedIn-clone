@@ -9,6 +9,9 @@ import Login from "./components/Login/Login";
 import {auth} from "./firebase";
 import {logout, login} from "./features/userSlice";
 import Widgets from "./components/Widgets/Widgets";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Register from "./components/Register/Register";
+
 
 function App() {
 
@@ -32,16 +35,26 @@ function App() {
         })
     }, [dispatch])
     return (
+        <Router>
             <div className="app">
                 <Header/>
 
-                {!user ? <Login/>  : <div className="app__body">
-                    <Sidebar/>
-                    <Feed/>
-                    <Widgets/>
-                </div>
-                }
+                {!user ? <Switch>
+                    <Route exact component={Login} path={"/"} />
+                    <Route  component={Register} path={"/register"} />
+                </Switch> : <div className={"app__body"}>
+                    <Sidebar />
+                    <Feed />
+                    <Widgets />
+                </div>}
+                {/*{!user ? <Login/>  : <div className="app__body">*/}
+                {/*    <Sidebar/>*/}
+                {/*    <Feed/>*/}
+                {/*    <Widgets/>*/}
+                {/*</div>*/}
+                {/*}*/}
             </div>
+        </Router>
     );
 }
 
