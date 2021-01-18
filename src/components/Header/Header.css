@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    background-color: white;
 }
 
 .header__left {
@@ -27,9 +28,11 @@
     height: 22px;
     color: gray;
     background-color: #eef3f8;
+    border-radius: 5px;
 }
 
 .header__search > input {
+    border-radius: 20px;
     outline: none;
     background: none;
     border: none;

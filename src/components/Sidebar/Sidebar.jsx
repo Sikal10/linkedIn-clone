@@ -2,6 +2,8 @@ import React from 'react';
 import "./Sidebar.css"
 import Avatar from "@material-ui/core/Avatar";
 import GroupIcon from '@material-ui/icons/Group';
+import {useSelector} from "react-redux";
+import {selectUser} from "../../features/userSlice";
 
 const Sidebar = () => {
     const recentItem = (topic) => (
@@ -9,15 +11,17 @@ const Sidebar = () => {
             <span className={"sidebar__hash"}>{GroupIcon && <GroupIcon />}</span>
             <p>{topic}</p>
         </div>
-    )
+    );
+
+    const user = useSelector(selectUser);
 
     return (
         <div className={"sidebar"}>
             <div className="sidebar__top">
                 <img src="https://static-exp1.licdn.com/sc/h/cpemy7gsm8bzfb5nnbbnswfdm" alt=""/>
-                <Avatar className={"sidebar__avatar"}/>
-                <h2>Sikal Sikal</h2>
-                <h4>Sikal@gmail.com</h4>
+                <Avatar src={user.photoUrl} className={"sidebar__avatar"}>{user?.email[0]}</Avatar>
+                <h2>{user.displayName}</h2>
+                <h4>{user.email}</h4>
             </div>
 
             <div className="sidebar__stats">
